@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Routes, Route } from 'react-router-dom';
+
 import './App.css';
+import Home from './pages/Admin/Home/Home';
+import RoomList from './pages/Admin/Rooms/RoomList/RoomList';
+import User from './pages/Admin/User/User';
+import UserCreate from './pages/Admin/UserCreate/UserCreate';
+import UserEdit from './pages/Admin/UserEdit/UserEdit';
+import AdminTemplate from './templates/AdminTemplate/AdminTemplate';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="AppGlass">
+      <Routes>
+        <Route path=''  element={<AdminTemplate />}>
+          <Route index  element={<Home />}/>
+          <Route path='users' element={<User />}>
+            <Route path='search/:TenNguoiDung' element={<User />}/>
+          </Route>
+          <Route path='users/:id' element={<UserEdit />} />
+          <Route path='create-user' element={<UserCreate />}/>
+          <Route path='rooms' element={<RoomList />} />
+
+        </Route>
+      </Routes>
+      </div>
     </div>
   );
 }

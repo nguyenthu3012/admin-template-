@@ -1,0 +1,44 @@
+.mainTableImage{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.gender{
+    padding: .5rem 1rem;
+    border-radius: 10px;
+}
+
+.deleteIcon{
+    color: red;
+}
+
+.icon:hover{
+    transform: scale(1.1) !important;
+    cursor: pointer;
+}
+
+.updateIcon{
+    color: purple;
+    padding: 0 1rem;
+}
+
+.showIcon{
+    color: orange;
+}
+
+.roomImage {
+    width: 50%;
+    height: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.roomImage img {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 0;
+    width: 200%;
+    transition: all .5s;
+}

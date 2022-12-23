@@ -1,0 +1,88 @@
+.newUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 5rem;
+}
+.newUserForm {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.newUserHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.newUserItem{
+    width: 400px;
+    flex-direction: column;
+    display: flex;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.newUserItem>label{
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(151, 150, 150);
+}
+
+.newUserItem>input{
+    margin-bottom: 10px;
+    height: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.newUserGender input{
+    margin-top: 15px;
+    margin-right: 1rem;
+    margin-bottom: 10px;
+}
+
+.newUserGender label{
+    margin-top: 10px;
+    font-size: 18px;
+    color: #555;
+}
+.userButton{
+    width: 100%;
+    text-align: end;
+}
+
+.newUserButton{
+    width: 200px;
+    border: none;
+    background-color: #FF919D;
+    color: #fff;
+    padding: 7px 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 30px;
+    
+}
+
+.newUserGender {
+    display: flex;
+}
+
+.error{
+    font-size: 13px;
+    color: red !important;
+    margin-top: .5rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .userButton{
+        text-align: center;
+    }
+}
