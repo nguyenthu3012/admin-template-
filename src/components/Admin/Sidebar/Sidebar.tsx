@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./sidebar.css";
 import Logo from '../../../assets/imgs/logo.png'
 import { SidebarData } from '../../../assets/Data/Data';
-import {Dns, RoundaboutRightOutlined} from '@mui/icons-material';
+import {Dns, LoginOutlined, RoundaboutRightOutlined} from '@mui/icons-material';
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { getStorageJson, USER_LOGIN } from "../../../util/config";
 
 const Sidebar = () => {
   const [selected, setSelected] = useState<number>(0);
@@ -20,6 +21,8 @@ const Sidebar = () => {
     }
   }
 
+  const user = getStorageJson(USER_LOGIN)
+
   return (
     <>
       <div className="bars" style={expanded?{left: '60%'}:{left: '5%'}} onClick={()=>setExpaned(!expanded)}>
@@ -33,7 +36,7 @@ const Sidebar = () => {
       <div className="logo">
         <img src={Logo} alt="logo" />
         <span>
-          Hello! <span>Admin</span>
+          Hello! <span>{user ? user.name : 'ADMIN'}</span>
         </span>
       </div>
 
@@ -51,7 +54,11 @@ const Sidebar = () => {
           );
         })}
         {/* signoutIcon */}
-        <div className="menuItem">
+        <Link to={'/login'} className={`${user ? 'visible' : ''} menuItem`}>
+          <LoginOutlined />
+          <span>Login</span>
+        </Link>
+        <div className={`${user ? '' : 'visible'} menuItem`}>
           <RoundaboutRightOutlined />
           <span>Sign out</span>
         </div>

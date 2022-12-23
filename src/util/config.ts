@@ -7,7 +7,7 @@ const TOKEN_CYBERSOFT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJGcm
 
 export const http = axios.create({
     baseURL: DOMAIN,
-    timeout: 30000
+    timeout: 3000
 })
 
 // Cau hinh ham get set Storage hoac Cookie
@@ -45,7 +45,8 @@ http.interceptors.request.use((config) => {
     config.headers = {
         ...config.headers,
         Authorization: `Bearer ${getStore(ACCESS_TOKEN)}`,
-        TokenCybersoft: TOKEN_CYBERSOFT
+        TokenCybersoft: TOKEN_CYBERSOFT,
+        token: `${getStore(ACCESS_TOKEN)}`
     };
     return config;
 }, (err) => {

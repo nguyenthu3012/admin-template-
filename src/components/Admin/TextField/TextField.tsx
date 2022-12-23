@@ -26,16 +26,6 @@ const TextField = ({
   classStyle,
 }: Props) => {
   return (
-    // <label>{label}</label>
-    //         {(inputType === 'textarea') ?
-    //             (
-    //                 <textarea className={classStyle} type="text" name="" placeholder={data}
-    //                     onChange={e => setData(e.target.value)} />
-    //             ) :
-    //             (
-    //                 <input type="text" name="" placeholder={data}
-    //                     onChange={e => setData(e.target.value)} />
-    //             )}
     <div className={classWrapperStyle}>
       <label htmlFor="">{label}</label>
       {inputType === "date" ? (

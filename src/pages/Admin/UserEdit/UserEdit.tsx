@@ -17,7 +17,6 @@ import { useParams } from "react-router-dom";
 import { UserModel } from "../../../Models/UserModel/UserModel";
 // css
 import "./userEdit.css";
-import "react-datepicker/dist/react-datepicker.css";
 // image
 import profile from "../../../assets/imgs/profile.png";
 

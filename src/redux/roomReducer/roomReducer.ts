@@ -22,11 +22,15 @@ const roomReducer = createSlice({
     },
     getRoomPagAction: (state: RoomState, action: PayloadAction<RoomModel[]>) => {
         state.roomPagination = action.payload
+    },
+    deleteRoomByIdAction : (state: RoomState, action: PayloadAction<number>) => {
+        state.rooms = state.rooms.filter(room => room.id !== action.payload)
+
     }
   }
 });
 
-export const {getAllRoomAction, getRoomPagAction} = roomReducer.actions
+export const {getAllRoomAction, getRoomPagAction, deleteRoomByIdAction} = roomReducer.actions
 
 export default roomReducer.reducer
 
@@ -46,5 +50,13 @@ export const getRoomPagApi = (pageIndex: number, pageSize: number) => {
         const content: RoomModel[] = result.data.content.data
         const action: PayloadAction<RoomModel[]> = getRoomPagAction(content)
         dispatch(action)
+    }
+}
+
+
+export const deleteRoomByIdApi = (id: number) => {
+    return async (dispatch: AppDispatch) => {
+        const result = await http.delete(`/api/phong-thue/${id}`)
+        dispatch(deleteRoomByIdAction(id))
     }
 }

@@ -9,3 +9,8 @@ export type UserModel = {
     gender:   boolean;
     role:     string;
 }
+
+export type LoginModel = {
+    email: string;
+    password: string;
+}

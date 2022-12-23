@@ -1,17 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { UserModel } from '../../Models/UserModel/UserModel'
-import { http } from '../../util/config'
+import { history } from '../..'
+import { LoginModel, UserModel } from '../../Models/UserModel/UserModel'
+import { ACCESS_TOKEN, getStorageJson, http, USER_LOGIN, setStorage, setStorageJson } from '../../util/config'
 import { AppDispatch } from '../configureStore'
 export type UserState = {
     users: UserModel[],
     usersPagination: UserModel[],
-    userDetail: UserModel | null
+    userDetail: UserModel | null,
+    userLogin: UserModel | null
 }
 
 const initialState: UserState = {
     users: [],
     usersPagination: [],
-    userDetail: null
+    userDetail: null,
+    userLogin: getStorageJson(USER_LOGIN)
 }
 
 const userReducer = createSlice({
@@ -33,12 +36,14 @@ const userReducer = createSlice({
     createUserAction: (state: UserState, action: PayloadAction<UserModel>) => {
         state.users.push(action.payload)
         state.usersPagination.push(action.payload)
-
-    }
+    },
+    loginAction: (state: UserState, action: PayloadAction<UserModel>) =>  {
+        state.userLogin = action.payload;
+      },
   }
 });
 
-export const { getAllUserAction, getAllUserPaginationAction, deleteUserByIdAction, getUserByIdAction,createUserAction } = userReducer.actions
+export const { getAllUserAction, getAllUserPaginationAction, deleteUserByIdAction, getUserByIdAction,createUserAction, loginAction } = userReducer.actions
 
 export default userReducer.reducer
 
@@ -75,6 +80,7 @@ export const deleteUserByIdApi = (id: number) => {
         try {
             const result = await http.delete(`/api/users?id=${id}`)
             dispatch(deleteUserByIdAction(id))
+            console.log(result)
 
         } catch (error) {
             console.log(error);
@@ -140,5 +146,21 @@ export const searchUserApi = (user: string) => {
         } catch (error) {
             console.log(error);
         }   
+    }
+}
+
+export const loginApi = (user: LoginModel) => {
+    return async (dispatch: AppDispatch) => {
+        try {
+            const result = await http.post('/api/auth/signin', user)
+            const userLogin : UserModel = result.data.content.user
+            setStorage(ACCESS_TOKEN, result.data.content.token);
+            setStorageJson(USER_LOGIN, result.data.content.user);
+            dispatch(loginAction(userLogin));
+            history.push('/')
+        } catch (error) {
+            console.log(error)
+        }
+      
     }
 }

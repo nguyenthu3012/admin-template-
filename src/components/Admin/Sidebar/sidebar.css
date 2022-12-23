@@ -49,6 +49,12 @@
   font-size: 14px;
 }
 
+.logInOut{
+  flex-direction: column;
+  align-items: start !important;
+  justify-content: flex-start !important;
+}
+
 .menuItem:hover {
   cursor: pointer;
   background: var(--activeItem);
@@ -72,6 +78,14 @@
   height: 100%;
   background: var(--pink);
   margin-right: calc(1rem - 8px);
+}
+
+.display {
+  display: block;
+}
+
+.visible{
+  display: none;
 }
 
 
@@ -102,7 +116,6 @@
   }
   .menu .menuItem:last-child {
     position: relative;
-    margin-top: 6rem;
   }
   .bars{
     display: flex;
@@ -118,4 +131,6 @@
     left: -60%;
   }
 }
+
+
 

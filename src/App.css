@@ -20,47 +20,11 @@ html{
   );
 }
 
-.App {
-  /* padding: 0.5rem 3.5rem; */
-  color: var(--black);
-  background: linear-gradient(
-    106.37deg,
-    #ffe1bc 29.63%,
-    #ffcfd1 51.55%,
-    #f3c6f1 90.85%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 97vh;
-  font-family: 'Inter', sans-serif;
-}
-
-.AppGlass {
-  display: grid;
-  height: 97%;
-  width: 97%;
-  background: var(--glass);
-  border-radius: 2rem;
-  gap: 16px;
-  grid-template-columns: 11rem auto;
-  overflow: hidden;
-}
 
 a{
-  text-decoration: none;
-  color: #000;
+  text-decoration: none !important;
+  color: #000 !important;
 }
 
-@media screen and (max-width: 1200px) {
-  .AppGlass{
-    grid-template-columns: 10% auto;
-    overflow-y: scroll;
-  } 
-}
 
-@media screen and (max-width: 768px) {
-  .AppGlass{
-    grid-template-columns: 1fr;
-  } 
-}
+
